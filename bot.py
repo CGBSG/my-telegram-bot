@@ -8,7 +8,7 @@ def echo(update: Update, context: CallbackContext):
     update.message.reply_text(f'شما نوشتید: {update.message.text}')
 
 def main():
-    updater = Updater(secrets.TOKEN) #"7913220968:AAG-vgmVsRNv3tkYZaSiBx6W9dKNfPLTGqA")
+    updater = Updater("7913220968:AAG-vgmVsRNv3tkYZaSiBx6W9dKNfPLTGqA")
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
