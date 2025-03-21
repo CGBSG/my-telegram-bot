@@ -1,0 +1,27 @@
+name: Run Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'  # هر ۵ دقیقه اجرا شود
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Bot
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: python bot.py
